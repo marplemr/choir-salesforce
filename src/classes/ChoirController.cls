@@ -8,7 +8,7 @@ public with sharing class ChoirController {
         }
     }
 	public void sendTest() {
-		
+		ChoirCallout.sendTest('Choir.io for Salesforce has been installed successfully');
 	}	
 
 	public void save() {

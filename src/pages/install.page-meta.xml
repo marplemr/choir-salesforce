@@ -2,19 +2,4 @@
 <ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>29.0</apiVersion>
     <label>install</label>
-    <packageVersions>
-        <majorNumber>2</majorNumber>
-        <minorNumber>7</minorNumber>
-        <namespace>Deskcom</namespace>
-    </packageVersions>
-    <packageVersions>
-        <majorNumber>1</majorNumber>
-        <minorNumber>33</minorNumber>
-        <namespace>MC4SF</namespace>
-    </packageVersions>
-    <packageVersions>
-        <majorNumber>1</majorNumber>
-        <minorNumber>0</minorNumber>
-        <namespace>sf_com_apps</namespace>
-    </packageVersions>
 </ApexPage>
