@@ -1,0 +1,27 @@
+<apex:page controller="ChoirController" id="install">
+
+<apex:sectionHeader title="Choir.io for Salesforce" subtitle="Install"/>
+
+<apex:form id="form">
+
+<apex:pageMessages />
+
+<apex:pageBlock title="Step 1: Grant permission">
+Please go to <b>Administer &raquo; Security Controls &raquo; Remote site</b><br/>
+</apex:pageBlock>
+
+<apex:pageBlock title="Step 2: Choir API key">
+Please copy and paste your Choir API key here: <br/>
+<apex:inputText value="{!settings.ChoirIO__API_Key__c}" />
+<apex:commandbutton action="{!save}" value="save" />
+</apex:pageBlock>
+
+<apex:pageBlock title="Step 3: Test">
+Open up your Choir player, then click the following button to 
+send a test message. <br/>
+<apex:commandButton action="{!sendtest}" value="Send test message"/>
+</apex:pageBlock>
+
+</apex:form>
+
+</apex:page>
