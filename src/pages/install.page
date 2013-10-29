@@ -5,20 +5,16 @@
 
 <apex:pageMessages />
 
-<apex:pageBlock title="Step 1: Grant permission">
-Please go to <b>Administer &raquo; Security Controls &raquo; Remote site</b><br/>
-</apex:pageBlock>
-
-<apex:pageBlock title="Step 2: Choir API key">
+<apex:pageBlock title="Choir API key">
 Please copy and paste your Choir API key here: <br/>
 <apex:inputText value="{!settings.API_Key__c}" />
 <apex:commandbutton action="{!save}" value="save" />
 </apex:pageBlock>
 
-<apex:pageBlock title="Step 3: Test">
-Open up your Choir player, then click the following button to 
+<apex:pageBlock title="Test">
+Open up your Choir player, click the following button to
 send a test message. <br/>
-<apex:commandButton action="{!sendtest}" value="Send test message"/>
+<apex:commandButton action="{!sendTest}" value="Send test message"/>
 </apex:pageBlock>
 
 </apex:form>

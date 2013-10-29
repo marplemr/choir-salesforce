@@ -1,12 +1,16 @@
 public with sharing class ChoirCallout {
 
+    public static String getAPIKey() {
+        return ChoirIO__Settings__c.getOrgDefaults().API_Key__c;
+    }
+
     @future (callout=true)
-    public static void sendNotification(String klass, String payload) {
+    public static void sendWebhookRequest(String klass, String payload) {
         HttpRequest req = new HttpRequest();
         HttpResponse res = new HttpResponse();
         Http http = new Http();
  
-        req.setEndpoint('http://requestb.in/1etfmbh1');
+        req.setEndpoint('http://hooks.choir.io/' + getAPIKey() + '/salesforce');
         req.setMethod('POST');
         req.setBody(klass+'='+EncodingUtil.urlEncode(payload, 'UTF-8'));
  
@@ -18,14 +22,16 @@ public with sharing class ChoirCallout {
     }
     
     @future (callout=true)
-    public static void sendTest(String payload) {
+    public static void sendDirectRequest(String sound, String label, String text) {
         HttpRequest req = new HttpRequest();
         HttpResponse res = new HttpResponse();
         Http http = new Http();
  
-        req.setEndpoint('http://requestb.in/1etfmbh1');
+        req.setEndpoint('http://api.choir.io/' + getAPIKey());
         req.setMethod('POST');
-        req.setBody('sound=bloop/success&label=test&text='+EncodingUtil.urlEncode(payload, 'UTF-8'));
+        req.setBody('sound=' + EncodingUtil.urlEncode(sound, 'UTF-8') + 
+            '&label=' + EncodingUtil.urlEncode(label, 'UTF-8')+
+            '&text=' + EncodingUtil.urlEncode(text, 'UTF-8'));
  
         try {
             res = http.send(req);
