@@ -3,7 +3,7 @@ trigger Choir_Lead_trigger on Lead (after insert, after update) {
     // Container for the payload sent to the server. 
     List<Map<String, Object>> payloads = new List<Map<String, Object>>();
     
-    // Pull all the owners' information from database so that we can 
+    // Pull all the user's information from database so that we can 
     // streamline queries and avoid governor limits. 
     List<SObject> modifiedrList =  [SELECT Id, Name, City, Country, Department, Division, CompanyName, Email, Phone 
         FROM User WHERE Id IN (SELECT LastModifiedById FROM Lead WHERE Id in :trigger.newMap.keySet())];
@@ -17,7 +17,7 @@ trigger Choir_Lead_trigger on Lead (after insert, after update) {
     for (Integer i = 0; i < trigger.size; i++) {
         Map<String, Object> payload = new Map<String, Object>();
         Lead curr = trigger.new[i];
-        payload.put('owner', modifiedrMap.get(curr.LastModifiedById));
+        payload.put('user', modifiedrMap.get(curr.LastModifiedById));
         
         payload.put('curr', curr);
         if (trigger.isUpdate) { 
@@ -26,6 +26,7 @@ trigger Choir_Lead_trigger on Lead (after insert, after update) {
         } else {
             payload.put('is_update', false);
         }
+        payload.put('base_url', URL.getSalesforceBaseUrl().toExternalForm());
         payloads.add(payload);
     }
     

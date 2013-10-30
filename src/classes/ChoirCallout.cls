@@ -11,6 +11,8 @@ public with sharing class ChoirCallout {
         Http http = new Http();
  
         req.setEndpoint('http://hooks.choir.io/' + getAPIKey() + '/salesforce');
+        //req.setEndpoint('http://requestb.in/wckmpqwc');
+        //req.setEndpoint('http://3znk.localtunnel.com/' + getAPIKey() + '/salesforce');
         req.setMethod('POST');
         req.setBody(klass+'='+EncodingUtil.urlEncode(payload, 'UTF-8'));
  
@@ -26,7 +28,9 @@ public with sharing class ChoirCallout {
         HttpRequest req = new HttpRequest();
         HttpResponse res = new HttpResponse();
         Http http = new Http();
- 
+        
+        //req.setEndpoint('http://requestb.in/wckmpqwc');
+        //req.setEndpoint('http://3znk.localtunnel.com/' + getAPIKey());
         req.setEndpoint('http://api.choir.io/' + getAPIKey());
         req.setMethod('POST');
         req.setBody('sound=' + EncodingUtil.urlEncode(sound, 'UTF-8') + 
