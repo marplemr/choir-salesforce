@@ -1,4 +1,4 @@
-trigger Choir_Case_trigger on Case (after update) {
+trigger Choir_Case_trigger on Case (after insert, after update) {
     // Container for the payload sent to the server. 
     List<Map<String, Object>> payloads = new List<Map<String, Object>>();
     
